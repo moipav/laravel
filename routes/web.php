@@ -20,6 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home'); 
 
-Route::get('/about', function () {
-    return 'this is about page and test git to vscode'
+Route::get('/about', function () {   
+    return view('about');
 });
