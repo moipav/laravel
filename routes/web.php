@@ -17,6 +17,9 @@ use Illuminate\View\View;
 */
 //test comit
 Route::get('/', function () {
-    // return view('welcome');
-    dd(DB::table('images')->select('*')->get());
+    return view('welcome');
+})->name('home'); 
+
+Route::get('/about', function () {
+    return 'this is about page and test git to vscode'
 });
