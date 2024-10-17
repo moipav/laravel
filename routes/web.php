@@ -15,7 +15,7 @@ use Illuminate\View\View;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+//test comit
 Route::get('/', function () {
     // return view('welcome');
     dd(DB::table('images')->select('*')->get());
