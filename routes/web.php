@@ -23,3 +23,8 @@ Route::get('/', function () {
 Route::get('/about', function () {   
     return view('about');
 });
+
+/**
+ * я не понимаю почему 
+ * это гитхаб не работает так, как я хочу
+ */
