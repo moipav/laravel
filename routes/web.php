@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-
+use Illuminate\Http\Request;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home'); 
 
-Route::get('/about', function () {   
+Route::get('/about', function (Request $request) {   
     return view('about');
 });
 
+Route::post('/test', [TestController::class, 'testValidate']);
 /**
  * я не понимаю почему 
  * это гитхаб не работает так, как я хочу
