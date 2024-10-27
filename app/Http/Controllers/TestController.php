@@ -12,7 +12,7 @@ class TestController extends Controller
             'title' => 'required',
             'text' => 'required|max:255|min:8',
         ]);
-       dd($request->get('title'));
+       dd($request->get('title'), $request->text);//оба варианта рабочие
         
     }
 }
