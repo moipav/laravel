@@ -26,8 +26,4 @@ Route::get('/about', function (Request $request) {
 });
 
 Route::post('/test', [TestController::class, 'testValidate']);
-/**
- * я не понимаю почему 
- * это гитхаб не работает так, как я хочу
- * проверим еще разок
- */
+
