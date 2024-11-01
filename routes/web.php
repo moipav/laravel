@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/users', [TestController::class, 'users']);
 Route::get('/about', function (Request $request) {
     return view('about');
 });
