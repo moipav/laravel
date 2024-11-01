@@ -16,12 +16,12 @@ use App\Http\Controllers\TestController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//test comit
+//test commit
 Route::get('/', function () {
     return view('welcome');
-})->name('home'); 
+})->name('home');
 
-Route::get('/about', function (Request $request) {   
+Route::get('/about', function (Request $request) {
     return view('about');
 });
 
