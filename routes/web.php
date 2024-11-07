@@ -17,9 +17,7 @@ use App\Http\Controllers\TestController;
 |
 */
 //test commit
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [TestController::class, 'testCollection'])->name('home');
 
 Route::get('/users', [TestController::class, 'users']);
 Route::get('/about', function (Request $request) {

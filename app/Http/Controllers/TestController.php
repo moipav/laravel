@@ -33,4 +33,49 @@ class TestController extends Controller
         ];
         return view('users', ['users' => $users]);
     }
+
+    function testCollection()
+    {
+        $users = [
+            [
+                'id' => 1,
+                'name' => 'John',
+                'status' => 'ban'
+            ],
+            [
+                'id' => 2,
+                'name' => 'Jane',
+                'status' => 'active'
+            ],
+            [
+                'id' => 3,
+                'name' => 'James',
+                'status' => 'ban'
+            ],
+            [
+                'id' => 4,
+                'name' => 'Ban',
+                'status' => 'active'
+            ],
+        ];
+
+        $bannedUsers = [];
+
+        foreach ($users as $user) {
+            if ($user['status'] === 'ban') {
+                $bannedUsers[] = $user;
+            }
+        }
+        $collectionUsers = collect($users);
+        $foroch = $collectionUsers->map(function ($user) {
+            return $user['name'] . ',' . $user['status'];
+        });
+
+        $filtered = $collectionUsers->filter(function ($user) {
+            return $user['status'] !== 'ban' && $user['id'] > 2;
+        });
+
+//        $reduced = $collectionUsers->reduce()
+        dd($filtered);
+    }
 }
