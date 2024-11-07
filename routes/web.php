@@ -17,7 +17,9 @@ use App\Http\Controllers\TestController;
 |
 */
 //test commit
-Route::get('/', [TestController::class, 'testCollection'])->name('home');
+//Route::get('/', [TestController::class, 'testCollection'])->name('home');
+Route::get('/', [\Database\Seeders\PostSeeder::class, 'run'])->name('home');
+
 
 Route::get('/users', [TestController::class, 'users']);
 Route::get('/about', function (Request $request) {
