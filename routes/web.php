@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -18,9 +20,11 @@ use App\Http\Controllers\TestController;
 */
 //test commit
 //Route::get('/', [TestController::class, 'testCollection'])->name('home');
-Route::get('/', [\Database\Seeders\PostSeeder::class, 'run'])->name('home');
-
-
+//Route::get('/', [\Database\Seeders\PostSeeder::class, 'run'])->name('home');
+Route::get('/', function () {
+    dd(Post::where('user_id', '=', 11)->paginate(15));
+});
+Route::resource('posts', PostController::class);
 Route::get('/users', [TestController::class, 'users']);
 Route::get('/about', function (Request $request) {
     return view('about');

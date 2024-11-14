@@ -21,20 +21,25 @@ class PostSeeder extends Seeder
 //            'email' => fake()->email,
 //            'password' => Hash::make('password')
 //        ]);
+        $posts = [];
+        $countUsers = DB::table('users')->select('id')->get();
         for ($i = 0; $i < 50; $i++) {
-            $countUsers = DB::table('users')->select('id')->get();
-            $ran = $countUsers->random()->id;
             $title = fake()->text(50);
             $slug = Str::of($title)->slug('-');
-            DB::table('posts')->insert([
+            $content =  fake()->text();
+            $date = fake()->date();
+            $image = fake()->image;
+            $user_id = $countUsers->random()->id;
+            $posts = [
                 'title' => $title,
                 'slug' => $slug,
-                'content' => fake()->text(),
-                'date' => fake()->date(),
-                'image' => fake()->image,
-                'user_id' => $ran
+                'content' =>$content,
+                'date' => $date,
+                'image' => $image,
+                'user_id' => $user_id
+            ];
 
-            ]);
+            DB::table('posts')->insert($posts);
         }
     }
 }
