@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -34,12 +35,26 @@ class PostController extends Controller
             'title' => 'required|min:5|max:255',
             'content' => 'required|min:5'
         ]);
-        dd($request->all());
-        
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $slug = Str::of($request->string('title'))->slug('-');
+        $date = fake()->date();
+        $image = fake()->image;
+        $post = [
+            'title' => $title,
+            'slug' => $slug,
+            'content' =>$content,
+            'date' => $date,
+            'image' => $image,
+            'user_id' => 22
+
+        ];
+//        dd($content);
+
         /**
          * TODO разобраться с этим делом, не сохранияет из-за токена
          */
-        Post::create($request->all());
+        Post::create($post);
     }
 
     /**
