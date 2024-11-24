@@ -40,6 +40,8 @@ class PostController extends Controller
         $slug = Str::of($request->string('title'))->slug('-');
         $date = fake()->date();
         $image = fake()->image;
+        $user_id = 22;
+//        $post1 = compact($title, $content, $slug, $date, $image, $user_id);
         $post = [
             'title' => $title,
             'slug' => $slug,
@@ -49,7 +51,7 @@ class PostController extends Controller
             'user_id' => 22
 
         ];
-//        dd($content);
+        dd($post);
 
         /**
          * TODO разобраться с этим делом, не сохранияет из-за токена
