@@ -22,7 +22,7 @@ use App\Http\Controllers\TestController;
 //Route::get('/', [TestController::class, 'testCollection'])->name('home');
 //Route::get('/', [\Database\Seeders\PostSeeder::class, 'run'])->name('home');
 Route::get('/', function () {
-    dd(Post::where('user_id', '=', 11)->paginate(15));
+    dd(Post::paginate(15));
 });
 Route::resource('posts', PostController::class);
 Route::get('/users', [TestController::class, 'users']);

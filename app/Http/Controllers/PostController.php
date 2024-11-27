@@ -13,7 +13,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate();
         return view('posts.index', compact('posts'));
         //
     }
@@ -51,7 +51,7 @@ class PostController extends Controller
             'user_id' => 22
 
         ];
-        dd($post);
+//        dd($post);
 
         /**
          * TODO разобраться с этим делом, не сохранияет из-за токена
